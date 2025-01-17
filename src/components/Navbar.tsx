@@ -1,4 +1,12 @@
 import Link from "next/link";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navbar() {
   return (
@@ -9,14 +17,12 @@ export default function Navbar() {
         </Link>
         <div className="hidden space-x-6 md:flex">
           {[
-            "Home",
             "About",
-            "Projects",
+            "Resources",
             "Get Involved",
             "Events",
-            "News",
+            "Gallery",
             "Contact",
-            "FAQ",
           ].map((item) => (
             <Link
               key={item}
@@ -26,6 +32,19 @@ export default function Navbar() {
               {item}
             </Link>
           ))}
+        
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger>Open</DropdownMenuTrigger>
+            <DropdownMenuContent>
+              <DropdownMenuLabel>My Account</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem>Profile</DropdownMenuItem>
+              <DropdownMenuItem>Billing</DropdownMenuItem>
+              <DropdownMenuItem>Team</DropdownMenuItem>
+              <DropdownMenuItem>Subscription</DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </nav>
