@@ -1,5 +1,6 @@
 "use client";
 import Navbar from "@/components/Navbar";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
@@ -47,10 +48,18 @@ export default function page() {
     <>
       <main className="min-h-screen">
         <Navbar />
-
-        {/* About */}
+        {/* Hero */}
         <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
-          <div className="mx-auto max-w-4xl space-y-6">
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+            className="mx-auto max-w-4xl space-y-6"
+          >
             <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
               Making a Difference Together
             </h1>
@@ -76,12 +85,22 @@ export default function page() {
               <span className="text-sm">Discover More</span>
               <ChevronDown className="h-6 w-6 animate-bounce" />
             </div>
-          </div>
+          </motion.div>
         </section>
 
+        {/* About */}
         {/* Mission & Vision Section */}
         <section className="bg-white px-4 py-24" id="about">
-          <div className="mx-auto max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+            className="mx-auto max-w-4xl text-center"
+          >
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
               Our Mission & Vision
             </h2>
@@ -91,12 +110,21 @@ export default function page() {
               development and collective action, working together to create
               lasting positive change.
             </p>
-          </div>
+          </motion.div>
         </section>
 
         {/* History Section */}
         <section className="bg-white px-4 py-24">
-          <div className="mx-auto max-w-7xl">
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+            className="mx-auto max-w-7xl"
+          >
             <div className="grid gap-12 lg:grid-cols-2">
               {/* Left Column */}
               <div className="space-y-6">
@@ -132,12 +160,21 @@ export default function page() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Team */}
         <section className="py-16 bg-white">
-          <div className="container px-4 md:px-6 mx-auto">
+          <motion.div
+            initial={{ opacity: 0.0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              delay: 0.3,
+              duration: 0.6,
+              ease: "easeInOut",
+            }}
+            className="container px-4 md:px-6 mx-auto"
+          >
             <h2 className="text-2xl font-bold text-center mb-12">Our Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {teamMembers.map((member, index) => (
@@ -166,18 +203,36 @@ export default function page() {
                 </div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Contact */}
         <section className="py-16 bg-[#f9f9f9]">
           <div className="container px-4 md:px-6 mx-auto">
-            <div className="text-center mb-12">
+            <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.1,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="text-center mb-12"
+            >
               <h2 className="text-3xl font-bold mb-2">Contact Us</h2>
               <div className="h-1 w-24 bg-emerald-600 mx-auto"></div>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.2,
+                duration: 0.6,
+                ease: "easeInOut",
+              }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8"
+            >
               {/* Contact Form */}
               <Card>
                 <CardHeader>
@@ -236,7 +291,16 @@ export default function page() {
               </Card>
 
               {/* Contact Information & Map */}
-              <div className="space-y-8">
+              <motion.div
+                initial={{ opacity: 0.0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.3,
+                  duration: 0.6,
+                  ease: "easeInOut",
+                }}
+                className="space-y-8"
+              >
                 <Card>
                   <CardHeader>
                     <CardTitle>Contact Information</CardTitle>
@@ -271,22 +335,32 @@ export default function page() {
                 </Card>
 
                 {/* Map */}
-                <Card>
-                  <CardContent className="p-0">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1408.766726289526!2d87.28720737034004!3d26.82198753389794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef4176fbd0189b%3A0xcd454e4bda1ff6d5!2z4KSV4KWH4KSo4KWN4KSm4KWN4KSw4KS_4KSvIOCkquCljeCksOCkteCkv-Ckp-CkvyDgpJXgpY3gpK_gpL7gpK7gpY3gpKrgpLg!5e0!3m2!1sen!2snp!4v1737213363027!5m2!1sen!2snp"
-                      width="100%"
-                      height="300"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="rounded-lg"
-                    ></iframe>
-                  </CardContent>
-                </Card>
-              </div>
-            </div>
+                <motion.div
+                  initial={{ opacity: 0.0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{
+                    delay: 0.4,
+                    duration: 0.6,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <Card>
+                    <CardContent className="p-0">
+                      <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1408.766726289526!2d87.28720737034004!3d26.82198753389794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef4176fbd0189b%3A0xcd454e4bda1ff6d5!2z4KSV4KWH4KSo4KWN4KSm4KWN4KSw4KS_4KSvIOCkquCljeCksOCkteCkv-Ckp-CkvyDgpJXgpY3gpK_gpL7gpK7gpY3gpKrgpLg!5e0!3m2!1sen!2snp!4v1737213363027!5m2!1sen!2snp"
+                        width="100%"
+                        height="300"
+                        style={{ border: 0 }}
+                        allowFullScreen
+                        loading="lazy"
+                        referrerPolicy="no-referrer-when-downgrade"
+                        className="rounded-lg"
+                      ></iframe>
+                    </CardContent>
+                  </Card>
+                </motion.div>
+              </motion.div>
+            </motion.div>
           </div>
         </section>
       </main>
