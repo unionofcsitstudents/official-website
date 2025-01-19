@@ -12,6 +12,7 @@ export default function Navbar() {
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   const navItems = [
+    { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
     { name: "Resources", href: "/resources" },
     { name: "Gallery", href: "/gallery" },
@@ -24,7 +25,7 @@ export default function Navbar() {
         { name: "Founding Committee", href: "/ec/founding" },
       ],
     },
-    { name: "Contact", href: "/contact" },
+    { name: "Contact", href: "/#contact" },
     { name: "FAQ", href: "/faq" },
   ];
 

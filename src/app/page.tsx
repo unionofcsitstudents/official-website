@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import Footer from "@/components/Footer";
 
 export default function page() {
   const handleSubmit = (e: React.FormEvent) => {
@@ -44,10 +45,12 @@ export default function page() {
       imageUrl: "/placeholder.svg?height=96&width=96",
     },
   ];
+
   return (
     <>
       <main className="min-h-screen">
         <Navbar />
+
         {/* Hero */}
         <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
           <motion.div
@@ -207,7 +210,7 @@ export default function page() {
         </section>
 
         {/* Contact */}
-        <section className="py-16 bg-[#f9f9f9]">
+        <section className="py-16 bg-[#f9f9f9]" id="contact">
           <div className="container px-4 md:px-6 mx-auto">
             <motion.div
               initial={{ opacity: 0.0, y: 40 }}
@@ -363,6 +366,7 @@ export default function page() {
             </motion.div>
           </div>
         </section>
+        <Footer/>
       </main>
     </>
   );
