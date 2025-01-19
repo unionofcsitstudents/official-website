@@ -1,3 +1,4 @@
+"use client";
 import Navbar from "@/components/Navbar";
 import React from "react";
 import Link from "next/link";
@@ -5,6 +6,7 @@ import { Facebook, Instagram, Linkedin, Github } from "lucide-react";
 import Logo from "../../../../public/logo.png";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface TeamMember {
   name: string;
@@ -120,14 +122,26 @@ export default function page() {
       },
     },
   ];
+
   const topRowMembers = teamMembers.slice(0, 5);
   const bottomRowMembers = teamMembers.slice(5);
+
   return (
-    <main className="min-h-screen">
+    <>
       <Navbar />
       <section className="relative bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900">
         {/* Main content container */}
-        <div className="container mx-auto px-4 py-26 md:py-36">
+
+        <motion.div
+          initial={{ opacity: 0.0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.6,
+            ease: "easeInOut",
+          }}
+          className="container mx-auto px-4 py-24 md:py-28"
+        >
           {/* Text content wrapper */}
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
@@ -138,7 +152,7 @@ export default function page() {
               organization
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Wave decoration */}
         <div className="absolute bottom-0 left-0 right-0 h-24 md:h-32">
@@ -160,22 +174,40 @@ export default function page() {
         <div className="container px-4 mx-auto">
           <div className="space-y-12">
             {/* Top row */}
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12">
+            <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.3,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-12"
+            >
               {topRowMembers.map((member) => (
                 <TeamMemberCard key={member.name} member={member} />
               ))}
-            </div>
+            </motion.div>
 
             {/* Bottom row */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0.0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{
+                delay: 0.4,
+                duration: 0.8,
+                ease: "easeInOut",
+              }}
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 max-w-4xl mx-auto"
+            >
               {bottomRowMembers.map((member) => (
                 <TeamMemberCard key={member.name} member={member} />
               ))}
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
-    </main>
+    </>
   );
 }
 function TeamMemberCard({ member }: { member: TeamMember }) {

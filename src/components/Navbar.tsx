@@ -34,12 +34,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-black fixed top-0 left-0 right-0 z-50">
+    <nav className="bg-black sticky top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between py-4">
           <Link href="/" className="flex items-center space-x-2">
             <Image src={Logo} alt="logo" className="w-8 h-8" />
-            <span className="text-xl font-bold text-white">Organization</span>
+
+            <span className="block md:hidden lg:block text-xl font-bold text-white">
+              Union of CSIT Students
+            </span>
+
+            <span className="hidden md:block md:pr-8 lg:hidden text-xl font-bold text-white">
+              UCS
+            </span>
           </Link>
           <Button
             variant="ghost"

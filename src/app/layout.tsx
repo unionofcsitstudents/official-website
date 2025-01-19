@@ -14,7 +14,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Union of CSIT Students",
-  description: "A non political organization for the welfare of students. It was created in 2080 by the students of Computer Science and Information Technology department of Central Campus of Technology.",
+  description:
+    "A non political organization for the welfare of students. It was created in 2080 by the students of Computer Science and Information Technology department of Central Campus of Technology.",
 };
 
 export default function RootLayout({
@@ -27,7 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main className="min-h-screen ">{children}</main>
       </body>
     </html>
   );

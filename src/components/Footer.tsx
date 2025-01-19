@@ -1,25 +1,24 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "../../public/logo.png";
-import { Twitter, Linkedin, Github, Facebook, Instagram } from "lucide-react";
+import { Linkedin, Github, Facebook, Mail } from "lucide-react";
 
 export default function Footer() {
   const navigation = [
-    { name: "Products", href: "#" },
-    { name: "Studio", href: "#" },
-    { name: "Clients", href: "#" },
-    { name: "Pricing", href: "#" },
-    { name: "Blog", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/#about" },
+    { name: "Resources", href: "/resources" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Events", href: "/#events" },
+    { name: "Contact", href: "/#contact" },
+    { name: "FAQ", href: "/faq" },
   ];
 
   const socialLinks = [
-    { name: "Twitter", icon: Twitter, href: "#" },
+    { name: "Gmail", icon: Mail, href: "#" },
     { name: "LinkedIn", icon: Linkedin, href: "#" },
     { name: "GitHub", icon: Github, href: "#" },
     { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "Instagram", icon: Instagram, href: "#" },
   ];
 
   return (
@@ -29,12 +28,12 @@ export default function Footer() {
         <div className="flex flex-col items-center mb-12 space-y-6 md:justify-between">
           <div className="flex items-center gap-2 mb-4">
             {/* <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center"> */}
-              <Link href="/" className="flex items-center space-x-2">
-                <Image src={Logo} alt="logo" className="w-8 h-8" />
-                <span className="text-xl font-bold text-white">
-                  Union of CSIT Students
-                </span>
-              </Link>
+            <Link href="/" className="flex items-center space-x-2">
+              <Image src={Logo} alt="logo" className="w-8 h-8" />
+              <span className="text-xl font-bold text-white">
+                Union of CSIT Students
+              </span>
+            </Link>
             {/* </div> */}
           </div>
 
@@ -54,7 +53,11 @@ export default function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-800">
           <div className="mb-4 sm:mb-0">
-            <p className="text-gray-400">© DevStudios LLABC</p>
+            <p className="text-gray-400 text-center">
+              {" "}
+              Bijaypur Sadak, Dharan - 14, Sunsari <br></br>
+              unionofcsitstudents@gmail.com{" "}
+            </p>
           </div>
 
           <div className="flex gap-6">
