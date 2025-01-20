@@ -1,16 +1,44 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { ParallaxScroll } from "@/components/ui/parallax-scroll";
-// import Logo from "../../../../public/logo.png";
 
-export default function page() {
+export default function Page() {
   return (
     <>
       <Navbar />
-      
+
+      <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
+        <motion.div
+          initial={{ opacity: 0.0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            delay: 0.3,
+            duration: 0.6,
+            ease: "easeInOut",
+          }}
+          className="mx-auto max-w-4xl space-y-6"
+        >
+          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
+            <span className="text-white">Capturing Moments </span>
+            <span className="text-emerald-400 block lg:inline">
+              That Matter
+            </span>
+          </h1>
+          <p className="mx-auto max-w-[700px] text-lg text-gray-300 sm:text-xl">
+            Explore our collection of meaningful moments, events, and community
+            impact through our carefully curated gallery.
+          </p>
+          <div className="mt-12 flex flex-col items-center space-y-2">
+            <span className="text-sm">Discover More</span>
+            <ChevronDown className="h-6 w-6 animate-bounce" />
+          </div>
+        </motion.div>
+      </section>
       <ParallaxScroll images={images} />
-     
+
       <Footer />
     </>
   );

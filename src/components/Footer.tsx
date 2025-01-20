@@ -15,10 +15,10 @@ export default function Footer() {
   ];
 
   const socialLinks = [
-    { name: "Gmail", icon: Mail, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "GitHub", icon: Github, href: "#" },
-    { name: "Facebook", icon: Facebook, href: "#" },
+    { name: "Gmail", icon: Mail, href: "mailto:unionofcsitstudents@gmail.com" },
+    { name: "LinkedIn", icon: Linkedin, href: "https://www.linkedin.com/company/ucscct/" },
+    { name: "GitHub", icon: Github, href: "https://github.com/unionofcsitstudents" },
+    { name: "Facebook", icon: Facebook, href: "https://www.facebook.com/ucscct" },
   ];
 
   return (

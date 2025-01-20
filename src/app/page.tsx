@@ -9,6 +9,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 import Footer from "@/components/Footer";
 
 export default function page() {
@@ -363,6 +369,84 @@ export default function page() {
               </motion.div>
             </motion.div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="w-full px-4 py-12 md:py-24 lg:py-32" id="faq">
+        <div className="container mx-auto max-w-3xl">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 relative inline-block">
+              Frequently Asked Questions
+              <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-16 h-1 bg-emerald-500"></div>
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Find answers to common questions about our organization and
+              programs
+            </p>
+          </div>
+
+          <Accordion type="single" collapsible className="w-full space-y-4">
+            <AccordionItem
+              value="item-1"
+              className="border-none rounded-lg bg-gray-50 px-4"
+            >
+              <AccordionTrigger className="font-semibold hover:no-underline py-4 text-left">
+                How can I get involved with your organization?
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 text-muted-foreground">
+                There are many ways to get involved with our organization. You
+                can become a member, volunteer for our programs, participate in
+                events, or contribute to our initiatives. Contact us to learn
+                more about current opportunities.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem
+              value="item-2"
+              className="border-none rounded-lg bg-gray-50 px-4"
+            >
+              <AccordionTrigger className="font-semibold hover:no-underline py-4 text-left">
+                What types of projects do you support?
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 text-muted-foreground">
+                We support a wide range of projects focused on community
+                development, education, environmental conservation, and social
+                welfare. Our projects are carefully selected to create
+                meaningful impact and sustainable change.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem
+              value="item-3"
+              className="border-none rounded-lg bg-gray-50 px-4"
+            >
+              <AccordionTrigger className="font-semibold hover:no-underline py-4 text-left">
+                How are donations used?
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 text-muted-foreground">
+                Your donations directly support our programs and initiatives. We
+                maintain full transparency in our financial operations, with the
+                majority of funds going directly to project implementation and
+                community support.
+              </AccordionContent>
+            </AccordionItem>
+
+            <AccordionItem
+              value="item-4"
+              className="border-none rounded-lg bg-gray-50 px-4"
+            >
+              <AccordionTrigger className="font-semibold hover:no-underline py-4 text-left">
+                Can I volunteer remotely?
+              </AccordionTrigger>
+              <AccordionContent className="pb-4 text-muted-foreground">
+                Yes, we offer various remote volunteering opportunities! From
+                digital skills support to project coordination, you can
+                contribute to our mission from anywhere in the world. Check our
+                volunteer page for current remote positions.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
       <Footer />

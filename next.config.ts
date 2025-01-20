@@ -11,7 +11,7 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com'], // Add allowed domains here
+    domains: ['images.unsplash.com', 'hebbkx1anhila5yf.public.blob.vercel-storage.com'] // Add allowed domains here
   },
 };
 
