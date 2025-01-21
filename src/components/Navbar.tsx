@@ -13,7 +13,6 @@ export default function Navbar() {
 
   const navItems = [
     { name: "Home", href: "/" },
-    { name: "Resources", href: "/resources" },
     { name: "Gallery", href: "/gallery" },
     { name: "Events", href: "/#events" },
     {
@@ -27,6 +26,7 @@ export default function Navbar() {
     { name: "About", href: "/#about" },
     { name: "Contact", href: "/#contact" },
     { name: "FAQ", href: "/#faq" },
+    { name: "Get Involved", href: "/#getinvolved" },
   ];
 
   const toggleDropdown = (name: string) => {

@@ -4,21 +4,18 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import axios from "axios";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-
 import Footer from "@/components/Footer";
-import { useToast } from "@/hooks/use-toast";
-import { useState } from "react";
 import ContactForm from "@/components/ContactForm";
+import GetInvolved from "@/components/GetInvolved";
+import EventList from "@/components/EventList";
 
 export default function Page() {
-  
   const timelineEvents = [
     { year: "2010", title: "Organization Founded" },
     { year: "2015", title: "Expanded to National Level" },
@@ -66,7 +63,10 @@ export default function Page() {
           className="mx-auto max-w-4xl space-y-6"
         >
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            Making a Difference Together
+            Making a Difference <br />
+            <span className="text-colors-customBlue block lg:inline">
+              Together
+            </span>
           </h1>
           <p className="mx-auto max-w-[700px] text-lg text-gray-300 sm:text-xl">
             We are dedicated to creating positive change in our community
@@ -74,13 +74,13 @@ export default function Page() {
           </p>
           <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
             <Link
-              href="/get-involved"
-              className="inline-flex min-w-[200px] items-center justify-center rounded-lg bg-emerald-600 px-8 py-3 font-medium text-white hover:bg-emerald-700"
+              href="/#getinvolved"
+              className="inline-flex min-w-[200px] items-center justify-center rounded-lg bg-colors-customBlue px-8 py-3 font-medium text-white hover:bg-colors-customBlue/90"
             >
               Get Involved
             </Link>
             <Link
-              href="/learn-more"
+              href="/#about"
               className="inline-flex min-w-[200px] items-center justify-center rounded-lg border border-white px-8 py-3 font-medium text-white hover:bg-white/10"
             >
               Learn More
@@ -109,7 +109,7 @@ export default function Page() {
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
             Our Mission & Vision
           </h2>
-          <div className="mx-auto mt-4 h-1 w-24 bg-emerald-600"></div>
+          <div className="mx-auto mt-4 h-1 w-24 bg-colors-customBlue "></div>
           <p className="mx-auto mt-8 max-w-[800px] text-lg text-gray-600">
             We envision a world where communities thrive through sustainable
             development and collective action, working together to create
@@ -154,7 +154,7 @@ export default function Page() {
               <div className="space-y-8">
                 {timelineEvents.map((event, index) => (
                   <div key={event.year} className="flex items-center gap-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-600 text-white">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full bg-colors-customBlue  text-white">
                       {event.year}
                     </div>
                     <span className="text-lg font-medium">{event.title}</span>
@@ -167,18 +167,25 @@ export default function Page() {
       </section>
 
       {/* Team */}
-      <section className="py-16 bg-white">
+      <section className=" bg-white">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
-            delay: 0.3,
-            duration: 0.6,
+            delay: 0.1,
+            duration: 0.8,
             ease: "easeInOut",
           }}
-          className="container px-4 md:px-6 mx-auto"
+          className="text-center mb-12"
         >
-          <h2 className="text-2xl font-bold text-center mb-12">Our Team</h2>
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative inline-block">
+            Meet Our Team
+          </h2>
+          <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue "></div>
+          <p className="text-muted-foreground mb-8 text-lg">
+            Our team is composed of passionate individuals dedicated to creating
+            positive change in our community.
+          </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {teamMembers.map((member, index) => (
               <div
@@ -194,7 +201,7 @@ export default function Page() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 ease-in-out group-hover:text-emerald-600">
+                <h3 className="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 ease-in-out group-hover:text-colors-customBlue ">
                   {member.name}
                 </h3>
                 <p className="text-gray-600 font-medium mb-4 transition-colors duration-300 ease-in-out group-hover:text-gray-800">
@@ -209,16 +216,23 @@ export default function Page() {
         </motion.div>
       </section>
 
-      <ContactForm/>
+      {/* Events */}
+      <EventList />
+
+      {/* Get Involved */}
+      <GetInvolved />
+
+      {/* Contact */}
+      <ContactForm />
 
       {/* FAQ */}
-      <section className="w-full px-4 py-12 md:py-24 lg:py-32" id="faq">
+      <section className="px-4 py-12 md:py-24 lg:py-32" id="faq">
         <div className="container mx-auto max-w-3xl">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4 relative inline-block">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative inline-block">
               Frequently Asked Questions
-              <div className="absolute bottom-[-8px] left-1/2 transform -translate-x-1/2 w-16 h-1 bg-emerald-500"></div>
             </h2>
+            <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue"></div>
             <p className="text-muted-foreground text-lg">
               Find answers to common questions about our organization and
               programs

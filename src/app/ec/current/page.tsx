@@ -145,7 +145,9 @@ export default function page() {
           {/* Text content wrapper */}
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-              Meet Our Current Executive Committee
+              Meet Our{" "}
+              <span className="text-colors-customBlue">Current Executive </span>
+              Committee
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Visionary leaders driving innovation and excellence in our

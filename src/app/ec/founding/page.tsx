@@ -7,11 +7,20 @@ import Logo from "../../../../public/logo.png";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import suyash from "../../../../public/founding-members/suyash.webp";
+import bali from "../../../../public/founding-members/bali.webp";
+import rohan from "../../../../public/founding-members/rohan.webp";
+import jenisha from "../../../../public/founding-members/jenisha.webp";
+import salan from "../../../../public/founding-members/salan.webp";
+import gauravt from "../../../../public/founding-members/gauravt.webp";
+import gaurav from "../../../../public/founding-members/gaurav.webp";
+import sonuma from "../../../../public/founding-members/sonuma.webp";
+// import sajan from "../../../../public/founding-members/sajan.webp";
 
 interface TeamMember {
   name: string;
   role: string;
-  imageUrl: StaticImageData;
+  imageUrl: StaticImageData | string;
   socials: {
     facebook?: string;
     instagram?: string;
@@ -23,99 +32,99 @@ interface TeamMember {
 export default function page() {
   const teamMembers: TeamMember[] = [
     {
-      name: "Lyn Bryan",
-      role: "CEO",
-      imageUrl: Logo,
+      name: "Suyash Dhakal",
+      role: "PRESIDENT",
+      imageUrl: suyash,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/suyash.dhakal.3",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Lauren Pybus",
-      role: "VP, Growth & Development",
-      imageUrl: Logo,
+      name: "Baliram Shah",
+      role: "VICE PRESIDENT",
+      imageUrl: bali,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/baliram.sah.14",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Raelene Thomas",
-      role: "VP, Finance & Operations",
-      imageUrl: Logo,
+      name: "Rohan Khanal",
+      role: "SECRETARY",
+      imageUrl: rohan,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/profile.php?id=100076451437022",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Mitchell Fawcett",
-      role: "VP, Strategy",
-      imageUrl: Logo,
+      name: "Gaurav Trital",
+      role: "VICE SECRETARY",
+      imageUrl: gauravt,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/gaurav.dharan",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Jieun Segal",
-      role: "VP, Sales & Marketing",
-      imageUrl: Logo,
+      name: "Jenisha Karmacharya",
+      role: "TREASURER",
+      imageUrl: jenisha,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/jenisha.karmacharya.98",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Darren Maher",
-      role: "Creative Director",
-      imageUrl: Logo,
+      name: "Gaurav Khanal",
+      role: "MEMBER",
+      imageUrl: gaurav,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/gaurab.khanal98",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Ben Van Exan",
-      role: "Snr Account Executive",
+      name: "Sajjan Limbu",
+      role: "MEMBER",
       imageUrl: Logo,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/profile.php?id=61560635061507",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "John Blown",
-      role: "Founding Partner",
-      imageUrl: Logo,
+      name: "Sonuma Limbu",
+      role: "MEMBER",
+      imageUrl: sonuma,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/sonuma.limbu.16",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
     },
     {
-      name: "Chris Breikss",
-      role: "Founding Partner",
-      imageUrl: Logo,
+      name: "Salan Katuwal",
+      role: "MEMBER",
+      imageUrl: salan,
       socials: {
-        facebook: "https://facebook.com",
+        facebook: "https://www.facebook.com/salan.katwal.9",
         instagram: "https://instagram.com",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
@@ -145,7 +154,8 @@ export default function page() {
           {/* Text content wrapper */}
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight">
-              Meet Our Founding Committee
+              Meet Our{" "}
+              <span className="text-colors-customBlue">Founding Committee</span>
             </h2>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
               Visionary leaders driving innovation and excellence in our
@@ -210,6 +220,7 @@ export default function page() {
     </>
   );
 }
+
 function TeamMemberCard({ member }: { member: TeamMember }) {
   return (
     <div className="flex flex-col items-center text-center">
@@ -230,7 +241,7 @@ function TeamMemberCard({ member }: { member: TeamMember }) {
           <Link
             key={platform}
             href={url}
-            className="hover:text-black transition-colors"
+            className="hover:text-black transition-colors text-colors-customBlue"
             target="_blank"
             rel="noopener noreferrer"
           >

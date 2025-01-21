@@ -7,11 +7,11 @@ export default function Footer() {
   const navigation = [
     { name: "Home", href: "/" },
     { name: "About", href: "/#about" },
-    { name: "Resources", href: "/resources" },
     { name: "Gallery", href: "/gallery" },
+    { name: "Get Involved", href: "/#getinvolved" },
     { name: "Events", href: "/#events" },
     { name: "Contact", href: "/#contact" },
-    { name: "FAQ", href: "/faq" },
+    { name: "FAQ", href: "/#faq" },
   ];
 
   const socialLinks = [
@@ -51,7 +51,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-800">
+        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-colors-customBlue">
           <div className="mb-4 sm:mb-0">
             <p className="text-gray-400 text-center">
               {" "}

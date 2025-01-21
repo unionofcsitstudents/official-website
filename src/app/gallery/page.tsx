@@ -23,7 +23,7 @@ export default function Page() {
         >
           <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
             <span className="text-white">Capturing Moments </span>
-            <span className="text-emerald-400 block lg:inline">
+            <span className="text-colors-customBlue block lg:inline">
               That Matter
             </span>
           </h1>

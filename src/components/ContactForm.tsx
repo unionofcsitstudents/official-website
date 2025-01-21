@@ -57,12 +57,10 @@ export default function ContactForm() {
         target.name.value = "";
         target.email.value = "";
         target.message.value = "";
-        toast({
-          description: result.message,
-        });
+
         if (validEmail.deliverability === "DELIVERABLE") {
           toast({
-            description: "✅ Email exists and is deliverable.",
+            description: result.message,
           });
         } else {
           toast({
@@ -92,8 +90,13 @@ export default function ContactForm() {
             }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold mb-2">Contact Us</h2>
-            <div className="h-1 w-24 bg-emerald-600 mx-auto"></div>
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative inline-block">
+              Contact Us
+            </h2>
+              <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue "></div>
+            <p className="text-muted-foreground text-lg">
+              Send us a message and we will get back to you as soon as possible.
+            </p>
           </motion.div>
 
           <motion.div
@@ -159,7 +162,7 @@ export default function ContactForm() {
                   <Button
                     type="submit"
                     disabled={isLoading}
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
+                    className="w-full bg-colors-customBlue hover:bg-colors-customBlue/90 text-white"
                   >
                     {isLoading ? (
                       <Loader2 className="animate-spin" />
@@ -188,7 +191,7 @@ export default function ContactForm() {
                 </CardHeader>
                 <CardContent className="space-y-4">
                   <div className="flex items-start space-x-4">
-                    <MapPin className="w-5 h-5 text-emerald-600 mt-1" />
+                    <MapPin className="w-5 h-5 text-colors-customBlue mt-1" />
                     <div>
                       <h4 className="font-semibold">Address</h4>
                       <p className="text-gray-600">
@@ -199,14 +202,14 @@ export default function ContactForm() {
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <Phone className="w-5 h-5 text-emerald-600 mt-1" />
+                    <Phone className="w-5 h-5 text-colors-customBlue mt-1" />
                     <div>
                       <h4 className="font-semibold">Phone</h4>
                       <p className="text-gray-600">(+977) 9842704555</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-4">
-                    <Mail className="w-5 h-5 text-emerald-600 mt-1" />
+                    <Mail className="w-5 h-5 text-colors-customBlue mt-1" />
                     <div>
                       <h4 className="font-semibold">Email</h4>
                       <p className="text-gray-600">
