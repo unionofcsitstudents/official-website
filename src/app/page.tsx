@@ -4,24 +4,21 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
-import { MapPin, Phone, Mail } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import axios from "axios";
 import {
   Accordion,
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import Footer from "@/components/Footer";
 
-export default function page() {
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Handle form submission
-  };
+import Footer from "@/components/Footer";
+import { useToast } from "@/hooks/use-toast";
+import { useState } from "react";
+import ContactForm from "@/components/ContactForm";
+
+export default function Page() {
+  
   const timelineEvents = [
     { year: "2010", title: "Organization Founded" },
     { year: "2015", title: "Expanded to National Level" },
@@ -212,165 +209,7 @@ export default function page() {
         </motion.div>
       </section>
 
-      {/* Contact */}
-      <section className="py-16 bg-[#f9f9f9]" id="contact">
-        <div className="container px-4 md:px-6 mx-auto">
-          <motion.div
-            initial={{ opacity: 0.0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.1,
-              duration: 0.8,
-              ease: "easeInOut",
-            }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold mb-2">Contact Us</h2>
-            <div className="h-1 w-24 bg-emerald-600 mx-auto"></div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0.0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{
-              delay: 0.2,
-              duration: 0.6,
-              ease: "easeInOut",
-            }}
-            className="grid grid-cols-1 lg:grid-cols-2 gap-8"
-          >
-            {/* Contact Form */}
-            <Card>
-              <CardHeader>
-                <CardTitle>Send us a Message</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-4">
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="name"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Full Name
-                    </label>
-                    <Input
-                      id="name"
-                      placeholder="Full Name"
-                      className="w-full"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="email"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Email Address
-                    </label>
-                    <Input
-                      id="email"
-                      type="email"
-                      placeholder="Email Address"
-                      className="w-full"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label
-                      htmlFor="message"
-                      className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                    >
-                      Message
-                    </label>
-                    <Textarea
-                      id="message"
-                      placeholder="Message"
-                      className="min-h-[150px] w-full"
-                    />
-                  </div>
-                  <Button
-                    type="submit"
-                    className="w-full bg-emerald-600 hover:bg-emerald-700 text-white"
-                  >
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-
-            {/* Contact Information & Map */}
-            <motion.div
-              initial={{ opacity: 0.0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{
-                delay: 0.3,
-                duration: 0.6,
-                ease: "easeInOut",
-              }}
-              className="space-y-8"
-            >
-              <Card>
-                <CardHeader>
-                  <CardTitle>Contact Information</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <MapPin className="w-5 h-5 text-emerald-600 mt-1" />
-                    <div>
-                      <h4 className="font-semibold">Address</h4>
-                      <p className="text-gray-600">
-                        Bijaypur Sadak
-                        <br />
-                        Dharan - 14, Sunsari
-                      </p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <Phone className="w-5 h-5 text-emerald-600 mt-1" />
-                    <div>
-                      <h4 className="font-semibold">Phone</h4>
-                      <p className="text-gray-600">(+977) 9842704555</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <Mail className="w-5 h-5 text-emerald-600 mt-1" />
-                    <div>
-                      <h4 className="font-semibold">Email</h4>
-                      <p className="text-gray-600">
-                        unionofcsitstudents@gmail.com
-                      </p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Map */}
-              <motion.div
-                initial={{ opacity: 0.0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.4,
-                  duration: 0.6,
-                  ease: "easeInOut",
-                }}
-              >
-                <Card>
-                  <CardContent className="p-0">
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1408.766726289526!2d87.28720737034004!3d26.82198753389794!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39ef4176fbd0189b%3A0xcd454e4bda1ff6d5!2z4KSV4KWH4KSo4KWN4KSm4KWN4KSw4KS_4KSvIOCkquCljeCksOCkteCkv-Ckp-CkvyDgpJXgpY3gpK_gpL7gpK7gpY3gpKrgpLg!5e0!3m2!1sen!2snp!4v1737213363027!5m2!1sen!2snp"
-                      width="100%"
-                      height="300"
-                      style={{ border: 0 }}
-                      allowFullScreen
-                      loading="lazy"
-                      referrerPolicy="no-referrer-when-downgrade"
-                      className="rounded-lg"
-                    ></iframe>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      <ContactForm/>
 
       {/* FAQ */}
       <section className="w-full px-4 py-12 md:py-24 lg:py-32" id="faq">
