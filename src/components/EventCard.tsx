@@ -1,23 +1,33 @@
-import { Card } from "@/components/ui/card"
-import Image from "next/image"
-import { CalendarDays, MapPin } from "lucide-react"
+import { Card } from "@/components/ui/card";
+import Image from "next/image";
+import { CalendarDays, MapPin, User } from "lucide-react";
 
 interface EventCardProps {
-  imageUrl: string
-  date: string
-  time: string
-  title: string
-  subtitle: string
-  location: string
-  status: "upcoming" | "ongoing" | "completed"
+  imageUrl: string;
+  date: string;
+  time: string;
+  title: string;
+  subtitle: string;
+  location: string;
+  mentor?: string;
+  status: "upcoming" | "ongoing" | "completed";
 }
 
-export default function EventCard({ imageUrl, date, time, title, subtitle, location, status }: EventCardProps) {
+export default function EventCard({
+  imageUrl,
+  date,
+  time,
+  title,
+  subtitle,
+  location,
+  status,
+  mentor,
+}: EventCardProps) {
   const statusColors = {
     upcoming: "bg-blue-500",
     ongoing: "bg-green-500",
     completed: "bg-gray-500",
-  }
+  };
 
   return (
     <Card className="flex flex-col sm:flex-row gap-4 p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-none bg-white/50 backdrop-blur hover:bg-white/80 relative overflow-hidden">
@@ -38,13 +48,21 @@ export default function EventCard({ imageUrl, date, time, title, subtitle, locat
             <span>{time}</span>
           </div>
           <div>
-            <h3 className="text-xl font-semibold tracking-tight hover:text-primary transition-colors">{title}</h3>
+            <h3 className="text-xl font-semibold tracking-tight hover:text-primary transition-colors">
+              {title}
+            </h3>
             <p className="text-sm text-muted-foreground mt-1">{subtitle}</p>
           </div>
           <div className="flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="h-4 w-4" />
             <span>{location}</span>
           </div>
+          {mentor && (
+            <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <User className="h-4 w-4" />
+              <span>Mentor: {mentor}</span>
+            </div>
+          )}
         </div>
       </div>
       <div
@@ -53,6 +71,5 @@ export default function EventCard({ imageUrl, date, time, title, subtitle, locat
         {status}
       </div>
     </Card>
-  )
+  );
 }
-

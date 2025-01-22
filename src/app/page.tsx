@@ -3,6 +3,9 @@ import Navbar from "@/components/Navbar";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
+import suyash from "../../public/founding-members/suyash.webp";
+import rohan from "../../public/founding-members/rohan.webp";
+import jenisha from "../../public/founding-members/jenisha.webp";
 import Image from "next/image";
 import {
   Accordion,
@@ -27,22 +30,22 @@ export default function Page() {
       name: "Suyash Dhakal",
       role: "President",
       description:
-        "Leading our organization with over 15 years of experience in non-profit management.",
-      imageUrl: "/placeholder.svg?height=96&width=96",
+        "Leading our organization with a vision for positive change and community impact.",
+      imageUrl: suyash,
     },
     {
       name: "Rohan Khanal",
       role: "Secretary",
       description:
         "Overseeing project implementation and community outreach initiatives.",
-      imageUrl: "/placeholder.svg?height=96&width=96",
+      imageUrl: rohan,
     },
     {
       name: "Jenisha Karmacharya",
       role: "Treasurer",
       description:
         "Building and nurturing relationships with our community partners.",
-      imageUrl: "/placeholder.svg?height=96&width=96",
+      imageUrl: jenisha,
     },
   ];
 

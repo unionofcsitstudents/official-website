@@ -3,7 +3,6 @@ import Navbar from "@/components/Navbar";
 import React from "react";
 import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Github } from "lucide-react";
-import Logo from "../../../../public/logo.png";
 import { StaticImageData } from "next/image";
 import Image from "next/image";
 import { motion } from "framer-motion";
@@ -15,7 +14,7 @@ import salan from "../../../../public/founding-members/salan.webp";
 import gauravt from "../../../../public/founding-members/gauravt.webp";
 import gaurav from "../../../../public/founding-members/gaurav.webp";
 import sonuma from "../../../../public/founding-members/sonuma.webp";
-// import sajan from "../../../../public/founding-members/sajan.webp";
+import sajan from "../../../../public/founding-members/sajan.webp";
 
 interface TeamMember {
   name: string;
@@ -37,9 +36,9 @@ export default function page() {
       imageUrl: suyash,
       socials: {
         facebook: "https://www.facebook.com/suyash.dhakal.3",
-        instagram: "https://instagram.com",
-        linkedin: "https://linkedin.com",
-        github: "https://github.com",
+        instagram: "https://www.instagram.com/_suyash.d/",
+        linkedin: "https://www.linkedin.com/in/suyash-dhakal/",
+        github: "https://github.com/Suyash-Dhakal",
       },
     },
     {
@@ -59,9 +58,9 @@ export default function page() {
       imageUrl: rohan,
       socials: {
         facebook: "https://www.facebook.com/profile.php?id=100076451437022",
-        instagram: "https://instagram.com",
-        linkedin: "https://linkedin.com",
-        github: "https://github.com",
+        instagram: "https://instagram.com/rohan.khanal119",
+        linkedin: "https://www.linkedin.com/in/rohan-khanal-ba6823274/",
+        github: "https://github.com/rohankhanal14",
       },
     },
     {
@@ -81,7 +80,7 @@ export default function page() {
       imageUrl: jenisha,
       socials: {
         facebook: "https://www.facebook.com/jenisha.karmacharya.98",
-        instagram: "https://instagram.com",
+        instagram: "https://www.instagram.com/jnysa7?igsh=MjY2azVnbXkyb2xr",
         linkedin: "https://linkedin.com",
         github: "https://github.com",
       },
@@ -98,9 +97,9 @@ export default function page() {
       },
     },
     {
-      name: "Sajjan Limbu",
+      name: "Sajan Limbu",
       role: "MEMBER",
-      imageUrl: Logo,
+      imageUrl: sajan,
       socials: {
         facebook: "https://www.facebook.com/profile.php?id=61560635061507",
         instagram: "https://instagram.com",
