@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import { shimmer, toBase64 } from "@/lib/base64";
 
 export const ParallaxScroll = ({
   images,
@@ -30,7 +31,10 @@ export const ParallaxScroll = ({
 
   return (
     <div
-      className={cn("max-h-screen items-start overflow-y-auto w-full scrollbar-hide", className)}
+      className={cn(
+        "max-h-screen items-start overflow-y-auto w-full scrollbar-hide bg-[#020817]",
+        className
+      )}
       ref={gridRef}
     >
       <div
@@ -45,10 +49,15 @@ export const ParallaxScroll = ({
             >
               <Image
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
+                className="h-80 w-full object-cover rounded-lg bg-[#020817] !m-0 !p-0"
                 height="400"
                 width="400"
                 alt="thumbnail"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(500, 300)
+                )}`}
               />
             </motion.div>
           ))}
@@ -58,10 +67,15 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
               <Image
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
+                className="h-80 w-full object-cover rounded-lg bg-[#020817] !m-0 !p-0"
                 height="400"
                 width="400"
                 alt="thumbnail"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(500, 300)
+                )}`}
               />
             </motion.div>
           ))}
@@ -71,10 +85,15 @@ export const ParallaxScroll = ({
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
               <Image
                 src={el}
-                className="h-80 w-full object-cover object-left-top rounded-lg gap-10 !m-0 !p-0"
+                className="h-80 w-full object-cover rounded-lg bg-[#020817] !m-0 !p-0"
                 height="400"
                 width="400"
                 alt="thumbnail"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                  shimmer(500, 300)
+                )}`}
               />
             </motion.div>
           ))}

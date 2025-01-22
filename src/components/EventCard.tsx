@@ -30,7 +30,7 @@ export default function EventCard({
   };
 
   return (
-    <Card className="flex flex-col sm:flex-row gap-4 p-4 shadow-lg hover:shadow-xl transition-all duration-300 border-none bg-white/50 backdrop-blur hover:bg-white/80 relative overflow-hidden">
+    <Card className="flex flex-col sm:flex-row gap-4 p-4 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-1 hover:bg-white cursor-pointer relative overflow-hidden">
       <div className="relative h-[200px] sm:h-[140px] w-full sm:w-[200px] flex-shrink-0 overflow-hidden rounded-lg">
         <Image
           src={imageUrl || "/placeholder.svg"}

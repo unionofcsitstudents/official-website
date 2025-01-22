@@ -22,19 +22,17 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-black text-white">
+    <footer className="bg-black border-t-[1px] border-colors-customBlue text-white">
       <div className="container mx-auto px-4 py-12">
         {/* Logo and Navigation */}
         <div className="flex flex-col items-center mb-12 space-y-6 md:justify-between">
           <div className="flex items-center gap-2 mb-4">
-            {/* <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center"> */}
             <Link href="/" className="flex items-center space-x-2">
               <Image src={Logo} alt="logo" className="w-8 h-8" />
               <span className="text-xl font-bold text-white">
                 Union of CSIT Students
               </span>
             </Link>
-            {/* </div> */}
           </div>
 
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
@@ -51,7 +49,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-colors-customBlue">
+        <div className="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-gray-800">
           <div className="mb-4 sm:mb-0">
             <p className="text-gray-400 text-center">
               {" "}

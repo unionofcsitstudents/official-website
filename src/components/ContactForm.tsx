@@ -80,7 +80,7 @@ export default function ContactForm() {
 
   return (
     <>
-      <section className="py-16 bg-[#f9f9f9]" id="contact">
+      <section className="py-16 bg-[#020817]" id="contact">
         <div className="container px-4 md:px-6 mx-auto">
           <motion.div
             initial={{ opacity: 0.0, y: 40 }}
@@ -92,11 +92,11 @@ export default function ContactForm() {
             }}
             className="text-center mb-12"
           >
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative inline-block">
+            <h2 className="text-3xl text-white font-bold tracking-tight sm:text-4xl relative inline-block">
               Contact Us
             </h2>
               <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue "></div>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-blue-100/80 text-lg">
               Send us a message and we will get back to you as soon as possible.
             </p>
           </motion.div>

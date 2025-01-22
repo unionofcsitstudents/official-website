@@ -53,52 +53,8 @@ export default function Page() {
   return (
     <>
       <Navbar />
-
       {/* Hero */}
-      {/* <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
-        <motion.div
-          initial={{ opacity: 0.0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.6,
-            ease: "easeInOut",
-          }}
-          className="mx-auto max-w-4xl space-y-6"
-        >
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            Making a Difference <br />
-            <span className="text-colors-customBlue block lg:inline">
-              Together
-            </span>
-          </h1>
-          <p className="mx-auto max-w-[700px] text-lg text-gray-300 sm:text-xl">
-            We are dedicated to creating positive change in our community
-            through sustainable initiatives and collaborative efforts.
-          </p>
-          <div className="flex flex-col items-center justify-center gap-4 sm:flex-row">
-            <Link
-              href="/#getinvolved"
-              className="inline-flex min-w-[200px] items-center justify-center rounded-lg bg-colors-customBlue px-8 py-3 font-medium text-white hover:bg-colors-customBlue/90"
-            >
-              Get Involved
-            </Link>
-            <Link
-              href="/#about"
-              className="inline-flex min-w-[200px] items-center justify-center rounded-lg border border-white px-8 py-3 font-medium text-white hover:bg-white/10"
-            >
-              Learn More
-            </Link>
-          </div>
-          <div className="mt-12 flex flex-col items-center space-y-2">
-            <span className="text-sm">Discover More</span>
-            <ChevronDown className="h-6 w-6 animate-bounce" />
-          </div>
-        </motion.div>
-      </section> */}
-
-      {/* Hero */}
-      <div className="min-h-screen relative overflow-hidden bg-[#020817]">
+      <section className="min-h-screen relative overflow-hidden bg-[#020817]">
         {/* Animated Gradient Background */}
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,#1a365d,transparent_50%)]" />
@@ -211,11 +167,12 @@ export default function Page() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020817] to-transparent" />
           <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
         </main>
-      </div>
+      </section>
 
       {/* About */}
       {/* Mission & Vision Section */}
-      <section className="bg-white px-4 py-24" id="about">
+
+      <section className="bg-[#020817]  px-4 py-24" id="about">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -226,11 +183,11 @@ export default function Page() {
           }}
           className="mx-auto max-w-4xl text-center"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
+          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-5xl">
             Our Mission & Vision
           </h2>
           <div className="mx-auto mt-4 h-1 w-24 bg-colors-customBlue "></div>
-          <p className="mx-auto mt-8 max-w-[800px] text-lg text-gray-600">
+          <p className="mx-auto mt-8 max-w-[800px] text-lg text-blue-100/80">
             We envision a world where communities thrive through sustainable
             development and collective action, working together to create
             lasting positive change.
@@ -239,7 +196,7 @@ export default function Page() {
       </section>
 
       {/* History Section */}
-      <section className="bg-white px-4 py-24">
+      <section className="bg-[#020817] px-4 py-24">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -253,16 +210,18 @@ export default function Page() {
           <div className="grid gap-12 lg:grid-cols-2">
             {/* Left Column */}
             <div className="space-y-6">
-              <h2 className="text-3xl font-bold tracking-tight">Our History</h2>
+              <h2 className="text-3xl font-bold tracking-tight text-white">
+                Our History
+              </h2>
               <div className="space-y-4">
-                <p className="text-gray-600">
+                <p className="text-blue-100/80">
                   Founded in 2010, our organization has grown from a small group
                   of dedicated volunteers to a thriving community of
                   change-makers. Over the years, we&apos;ve successfully
                   implemented numerous projects that have positively impacted
                   thousands of lives.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-blue-100/80">
                   Today, we continue to expand our reach and deepen our impact
                   through innovative programs and partnerships.
                 </p>
@@ -270,14 +229,16 @@ export default function Page() {
             </div>
 
             {/* Right Column */}
-            <div className="rounded-lg bg-[#f7f7f7] p-8">
+            <div className="rounded-lg bg-gradient-to-br from-[#020817] via-[#1e3a8a] to-[#22d3ee] p-8">
               <div className="space-y-8">
-                {timelineEvents.map((event, index) => (
+                {timelineEvents.map((event) => (
                   <div key={event.year} className="flex items-center gap-4">
                     <div className="flex h-12 w-12 items-center justify-center rounded-full bg-colors-customBlue  text-white">
                       {event.year}
                     </div>
-                    <span className="text-lg font-medium">{event.title}</span>
+                    <span className="text-lg text-white font-medium">
+                      {event.title}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -287,7 +248,7 @@ export default function Page() {
       </section>
 
       {/* Team */}
-      <section className=" bg-white">
+      <section className=" bg-[#020817] px-4 py-16">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -296,13 +257,13 @@ export default function Page() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="text-center mb-12"
+          className="text-center mx-auto max-w-7xl"
         >
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative inline-block">
+          <h2 className="text-3xl text-white font-bold tracking-tight sm:text-4xl relative inline-block">
             Meet Our Team
           </h2>
           <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue "></div>
-          <p className="text-muted-foreground mb-8 text-lg">
+          <p className="text-blue-100/80 mb-8 text-lg">
             Our team is composed of passionate individuals dedicated to creating
             positive change in our community.
           </p>
@@ -310,24 +271,25 @@ export default function Page() {
             {teamMembers.map((member, index) => (
               <div
                 key={index}
-                className="group bg-[#f7f7f7] rounded-lg p-8 flex flex-col items-center text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-1 hover:bg-white cursor-pointer"
+                className="group bg-gradient-to-br from-[#020817] via-[#1e3a8a] to-[#22d3ee]
+ rounded-lg p-8 flex flex-col items-center text-center shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] transition-all duration-300 ease-in-out hover:shadow-lg hover:transform hover:-translate-y-1 hover:bg-white cursor-pointer"
               >
                 <div className="w-24 h-24 mb-6 rounded-full bg-gray-200 overflow-hidden transition-transform duration-300 ease-in-out group-hover:scale-110">
                   <Image
-                    src={member.imageUrl || "/placeholder.svg"}
+                    src={member.imageUrl}
                     alt={`${member.name}'s profile`}
                     width={96}
                     height={96}
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2 transition-colors duration-300 ease-in-out group-hover:text-colors-customBlue ">
+                <h3 className="text-xl font-bold  text-white mb-2 transition-colors duration-300 ease-in-out group-hover:text-blue-100 ">
                   {member.name}
                 </h3>
-                <p className="text-gray-600 font-medium mb-4 transition-colors duration-300 ease-in-out group-hover:text-gray-800">
+                <p className=" text-white font-medium mb-4 transition-colors duration-300 ease-in-out group-hover:text-blue-100/80">
                   {member.role}
                 </p>
-                <p className="text-gray-500 leading-relaxed transition-colors duration-300 ease-in-out group-hover:text-gray-600">
+                <p className="text-blue-100/80 leading-relaxed transition-colors duration-300 ease-in-out group-hover:text-blue-100">
                   {member.description}
                 </p>
               </div>
@@ -346,14 +308,14 @@ export default function Page() {
       <ContactForm />
 
       {/* FAQ */}
-      <section className="px-4 py-12 md:py-24 lg:py-32" id="faq">
+      <section className="bg-[#020817] px-4 py-12 md:py-24 lg:py-32" id="faq">
         <div className="container mx-auto max-w-3xl">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl relative inline-block">
+            <h2 className="text-3xl font-bold tracking-tight sm:text-4xl text-white relative inline-block">
               Frequently Asked Questions
             </h2>
             <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue"></div>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-blue-100/80 text-lg">
               Find answers to common questions about our organization and
               programs
             </p>

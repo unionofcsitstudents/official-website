@@ -7,7 +7,7 @@ import PopupFormMember from "./PopupFormMember";
 
 export default function GetInvolved() {
   return (
-    <section className="bg-white px-4 py-24" id="getinvolved">
+    <section className="px-4 py-24 bg-[#020817]" id="getinvolved">
       <div className="container px-4 md:px-6 mx-auto">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
@@ -19,9 +19,9 @@ export default function GetInvolved() {
           }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold mb-4">Get Involved</h2>
+          <h2 className="text-4xl font-bold mb-4 text-white">Get Involved</h2>
           <div className="h-1 w-16 bg-colors-customBlue mx-auto"></div>
-          <p className="text-gray-600 mt-6 text-lg">
+          <p className="text-blue-100/80 mt-6 text-lg">
             Join us in making a difference. There are many ways you can
             contribute to our cause.
           </p>
