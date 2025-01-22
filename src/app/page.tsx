@@ -17,7 +17,7 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import GetInvolved from "@/components/GetInvolved";
 import EventList from "@/components/EventList";
-import PopupForm from "@/components/PopupFormVolunteer";
+import { Button } from "@/components/ui/button";
 
 export default function Page() {
   const timelineEvents = [
@@ -55,7 +55,7 @@ export default function Page() {
       <Navbar />
 
       {/* Hero */}
-      <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
+      {/* <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
         <motion.div
           initial={{ opacity: 0.0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -95,7 +95,123 @@ export default function Page() {
             <ChevronDown className="h-6 w-6 animate-bounce" />
           </div>
         </motion.div>
-      </section>
+      </section> */}
+
+      {/* Hero */}
+      <div className="min-h-screen relative overflow-hidden bg-[#020817]">
+        {/* Animated Gradient Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_-20%,#1a365d,transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_-20%_80%,#1e3a8a,transparent_50%)]" />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0.5, 0.4, 0.5] }}
+            transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
+            className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,#3b82f6,transparent_70%)] opacity-30"
+          />
+          <div className="absolute inset-0 backdrop-blur-[100px]" />
+        </div>
+
+        {/* Floating Elements */}
+        <div className="absolute inset-0 overflow-hidden">
+          {[...Array(20)].map((_, i) => (
+            <motion.div
+              key={i}
+              className="absolute w-1 h-1 bg-blue-400 rounded-full"
+              initial={{
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+              }}
+              animate={{
+                y: [700, 50, 100],
+                opacity: [0.2, 0.6, 1],
+              }}
+              transition={{
+                duration: 5 + Math.random() * 2,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: Math.random() * 2,
+              }}
+            />
+          ))}
+        </div>
+        {/* Hero Section */}
+        <main className="relative min-h-screen flex items-center justify-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 1 }}
+            transition={{ duration: 0.8 }}
+            className="max-w-4xl mx-auto text-center space-y-8 relative"
+          >
+            <motion.div
+              initial={{ scale: 0.9 }}
+              animate={{ scale: 1 }}
+              transition={{ duration: 1, ease: "easeOut" }}
+            >
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight mb-4">
+                <span className="text-white">Making a </span>
+                <span className="relative inline-block">
+                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600 via-blue-400 to-blue-600 blur-2xl opacity-30 animate-pulse" />
+                  <span className="relative">Difference</span>
+                </span>
+                <br />
+                <span className="bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">
+                  Together
+                </span>
+              </h1>
+            </motion.div>
+
+            <p className="text-blue-100/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+              We are dedicated to creating positive change in our community
+              through sustainable initiatives and collaborative efforts.
+            </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/#getinvolved"
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600  border-0 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300 inline-flex min-w-[200px] items-center justify-center rounded-lg bg-colors-customBlue px-8 py-3 font-medium text-white hover:bg-colors-customBlue/90"
+                >
+                  Get Involved
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Link
+                  href="/#about"
+                  className="inline-flex min-w-[200px] items-center justify-center rounded-lg border border-white px-8 py-3 font-medium text-white hover:bg-white/10"
+                >
+                  Learn More
+                </Link>
+              </motion.div>
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="absolute bottom-[-120px] left-1/2 transform -translate-x-1/2"
+            >
+              <Button
+                variant="ghost"
+                size="sm"
+                className="text-blue-400 hover:text-blue-300"
+              >
+                Discover More
+                <ChevronDown className="ml-2 h-4 w-4 animate-bounce" />
+              </Button>
+            </motion.div>
+          </motion.div>
+
+          {/* Decorative Elements */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#020817] to-transparent" />
+          <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+        </main>
+      </div>
 
       {/* About */}
       {/* Mission & Vision Section */}
@@ -267,10 +383,9 @@ export default function Page() {
                 What types of projects do you support?
               </AccordionTrigger>
               <AccordionContent className="pb-4 text-muted-foreground">
-                We support a wide range of projects focused on community
-                development, education, environmental conservation, and social
-                welfare. Our projects are carefully selected to create
-                meaningful impact and sustainable change.
+                We support a wide range of projects focused on education for
+                students and social welfare. Our projects are carefully selected
+                to create meaningful impact and sustainable change.
               </AccordionContent>
             </AccordionItem>
 
@@ -294,21 +409,17 @@ export default function Page() {
               className="border-none rounded-lg bg-gray-50 px-4"
             >
               <AccordionTrigger className="font-semibold hover:no-underline py-4 text-left">
-                Can I volunteer remotely?
+                Where is your organization based?
               </AccordionTrigger>
               <AccordionContent className="pb-4 text-muted-foreground">
-                Yes, we offer various remote volunteering opportunities! From
-                digital skills support to project coordination, you can
-                contribute to our mission from anywhere in the world. Check our
-                volunteer page for current remote positions.
+                Our organization is based in Central Campus of Technology,
+                Dharan -14, Nepal. We operate at the local levels, with a focus
+                on creating impact in our college and beyond.
               </AccordionContent>
             </AccordionItem>
           </Accordion>
         </div>
       </section>
-
-      <PopupForm />
-
       <Footer />
     </>
   );

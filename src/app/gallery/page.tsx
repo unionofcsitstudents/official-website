@@ -2,6 +2,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { ParallaxScroll } from "@/components/ui/parallax-scroll";
 
@@ -9,34 +10,64 @@ export default function Page() {
   return (
     <>
       <Navbar />
-
-      <section className="flex min-h-screen flex-col items-center justify-center bg-black px-4 pt-16 text-center text-white">
-        <motion.div
-          initial={{ opacity: 0.0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{
-            delay: 0.3,
-            duration: 0.6,
-            ease: "easeInOut",
-          }}
-          className="mx-auto max-w-4xl space-y-6"
-        >
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            <span className="text-white">Capturing Moments </span>
-            <span className="text-colors-customBlue block lg:inline">
-              That Matter
-            </span>
-          </h1>
-          <p className="mx-auto max-w-[700px] text-lg text-gray-300 sm:text-xl">
-            Explore our collection of meaningful moments, events, and community
-            impact through our carefully curated gallery.
-          </p>
-          <div className="mt-12 flex flex-col items-center space-y-2">
-            <span className="text-sm">Discover More</span>
-            <ChevronDown className="h-6 w-6 animate-bounce" />
+      <div className="min-h-screen relative overflow-hidden">
+        {/* Gradient Background */}
+        <div className="absolute inset-0 bg-black">
+          <div className="absolute inset-0 bg-gradient-to-tr from-blue-950 via-slate-900 to-blue-900 opacity-90" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]" />
+          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.1),transparent_50%)]" />
+        </div>
+        <main className="relative min-h-screen flex items-center">
+          {/* Animated Gradient Lines */}
+          <div className="absolute inset-0 overflow-hidden">
+            <div className="absolute h-[1px] w-full top-1/4 left-0 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
+            <div className="absolute h-[1px] w-full top-2/4 left-0 bg-gradient-to-r from-transparent via-blue-500/10 to-transparent" />
+            <div className="absolute h-[1px] w-full top-3/4 left-0 bg-gradient-to-r from-transparent via-blue-500/5 to-transparent" />
           </div>
-        </motion.div>
-      </section>
+
+          <div className="container mx-auto px-4 py-32">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="max-w-4xl mx-auto text-center space-y-8"
+            >
+              <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight">
+                <span className="text-white">Capturing Moments </span>
+                <span className="relative">
+                  <span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-400 blur-2xl opacity-30" />
+                  <span className="relative bg-gradient-to-r from-blue-400 to-blue-600 text-transparent bg-clip-text">
+                    That Matter
+                  </span>
+                </span>
+              </h1>
+
+              <p className="text-blue-200/80 text-lg md:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                Explore our collection of meaningful moments, events, and
+                community impact through our carefully curated gallery.
+              </p>
+
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                className="pt-8"
+              >
+                <Button
+                  size="lg"
+                  className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-600 text-white border-0 shadow-lg shadow-blue-500/25 hover:shadow-blue-500/40 transition-all duration-300"
+                >
+                  Discover More
+                  <ChevronDown className="ml-2 h-4 w-4 animate-bounce" />
+                </Button>
+              </motion.div>
+            </motion.div>
+          </div>
+
+          {/* Bottom Gradient */}
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
+        </main>
+      </div>
       <ParallaxScroll images={images} />
 
       <Footer />

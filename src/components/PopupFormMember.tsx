@@ -89,7 +89,7 @@ export default function PopupForm() {
     <Dialog>
       <DialogTrigger asChild>
         <Button className="w-full bg-colors-customBlue  hover:bg-colors-customBlue/90  text-white">
-          Become a Member
+          Apply for Membership
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
