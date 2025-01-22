@@ -9,7 +9,7 @@ const events = [
     title: "Workshop on Git and GitHub",
     subtitle: "ICT hall, Central Campus of Technology, Dharan - 14",
     location: "ICT hall, Central Campus of Technology, Dharan - 14",
-    mentor:"Rohan Khanal",
+    mentor: "Rohan Khanal",
     status: "upcoming" as const,
   },
   {
@@ -18,9 +18,10 @@ const events = [
     date: "21 Jan 2025",
     time: "11:00 AM",
     title: "Workshop on Enhancing E - Resources Access and Use ",
-    subtitle: "Join us to learn about the latest trends in E-Resources and how to access them",
+    subtitle:
+      "Join us to learn about the latest trends in E-Resources and how to access them",
     location: "Library, Central Campus of Technology, Dharan - 14",
-    mentor:"Mr. OM Khatiwada",
+    mentor: "Mr. OM Khatiwada",
     status: "completed" as const,
   },
   {
@@ -31,7 +32,7 @@ const events = [
     title: "Introduction to AWS",
     subtitle: "Exploring the cloud with Amazon Web Services",
     location: "ICT hall, Central Campus of Technology, Dharan - 14",
-    mentor:"Aju Tamang",
+    mentor: "Aju Tamang",
     status: "completed" as const,
   },
   {
@@ -42,10 +43,10 @@ const events = [
     title: "Workshop on Web Development",
     subtitle: "Learn to build a website from scratch",
     location: "ICT hall, Central Campus of Technology, Dharan - 14",
-    mentor:"Rohan Khanal",
+    mentor: "Rohan Khanal",
     status: "completed" as const,
   },
-]
+];
 
 export default function EventList() {
   return (
@@ -60,7 +61,10 @@ export default function EventList() {
         }}
         className="text-center mb-12"
       >
-        <h2 className="text-3xl font-bold mt-8 tracking-tight sm:text-4xl relative inline-block" id="events">
+        <h2
+          className="text-3xl font-bold mt-8 tracking-tight sm:text-4xl relative inline-block"
+          id="events"
+        >
           Events
         </h2>
         <div className="mx-auto m-4 h-1 w-24 bg-colors-customBlue "></div>

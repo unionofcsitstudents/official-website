@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, User, DollarSign } from "lucide-react";
 import { motion } from "framer-motion";
+import PopupForm from "./PopupForm";
 
 export default function GetInvolved() {
   return (
@@ -50,9 +51,9 @@ export default function GetInvolved() {
                   Share your time and skills to support our various programs and
                   initiatives.
                 </p>
-                <Button className="w-full bg-colors-customBlue  hover:bg-colors-customBlue/90  text-white">
-                  Join as Volunteer
-                </Button>
+                {/* <Button className="w-full bg-colors-customBlue  hover:bg-colors-customBlue/90  text-white">
+                </Button> */}
+                <PopupForm />
               </CardContent>
             </Card>
           </motion.div>

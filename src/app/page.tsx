@@ -17,6 +17,7 @@ import Footer from "@/components/Footer";
 import ContactForm from "@/components/ContactForm";
 import GetInvolved from "@/components/GetInvolved";
 import EventList from "@/components/EventList";
+import PopupForm from "@/components/PopupForm";
 
 export default function Page() {
   const timelineEvents = [
@@ -305,6 +306,9 @@ export default function Page() {
           </Accordion>
         </div>
       </section>
+
+      <PopupForm />
+      
       <Footer />
     </>
   );
