@@ -27,6 +27,7 @@ export default function PopupForm() {
         pnumber: { value: string };
         message: { value: string };
       };
+
       const URL = `https://emailvalidation.abstractapi.com/v1/?api_key=a66f4a6883a24f63a2bf3793336e16ce&email=${encodeURIComponent(
         target.email.value
       )}`;
@@ -51,6 +52,8 @@ export default function PopupForm() {
 
         data: JSON.stringify({
           access_key: "29239624-90d6-42a7-9f6c-a064e815f15e",
+          from_name: "Volunteer Form",
+          subject: "New Volunteer Application",
           name: target.name.value,
           email: target.email.value,
           pnumber: target.pnumber.value,
@@ -91,14 +94,13 @@ export default function PopupForm() {
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Apply as Volunteer</DialogTitle>
+          <DialogTitle>Application for Volunteering</DialogTitle>
           <DialogDescription>
             Share your time and skills to support our various programs and
             initiatives.
           </DialogDescription>
         </DialogHeader>
         <form onSubmit={handleSubmit} className="space-y-4">
-          <Input type="hidden" name="from_name" value="VOLUNTEER" />
           <div className="space-y-2">
             <label
               htmlFor="name"
@@ -149,12 +151,13 @@ export default function PopupForm() {
               htmlFor="message"
               className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
             >
-              Which program would you like to volunteer for?
+              Which program would you like to volunteer for? <br />
+              Also mention your faculty and semester !
             </label>
             <Textarea
               required
               id="message"
-              placeholder="Please mention your Faculty and Semester"
+              placeholder="Message"
               className="min-h-[150px] w-full"
             />
           </div>

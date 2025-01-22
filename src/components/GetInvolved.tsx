@@ -2,7 +2,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, User, DollarSign } from "lucide-react";
 import { motion } from "framer-motion";
-import PopupForm from "./PopupForm";
+import PopupFormVolunteer from "./PopupFormVolunteer";
+import PopupFormMember from "./PopupFormMember";
 
 export default function GetInvolved() {
   return (
@@ -51,9 +52,7 @@ export default function GetInvolved() {
                   Share your time and skills to support our various programs and
                   initiatives.
                 </p>
-                {/* <Button className="w-full bg-colors-customBlue  hover:bg-colors-customBlue/90  text-white">
-                </Button> */}
-                <PopupForm />
+                <PopupFormVolunteer />
               </CardContent>
             </Card>
           </motion.div>
@@ -79,12 +78,9 @@ export default function GetInvolved() {
                   Become a Member
                 </h3>
                 <p className="text-gray-600 text-center mb-6">
-                  Join our community and get exclusive access to events and
-                  programs.
+                  Join our community and lets work together to make a difference.
                 </p>
-                <Button className="w-full  bg-colors-customBlue  hover:bg-colors-customBlue/90  text-white">
-                  Apply for Membership
-                </Button>
+                <PopupFormMember />
               </CardContent>
             </Card>
           </motion.div>
