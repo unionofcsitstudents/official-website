@@ -1,22 +1,122 @@
 "use client";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
 import { ParallaxScroll } from "@/components/ui/parallax-scroll";
+import { useEffect, useState } from "react";
+import Image from "next/image";
+
+const floatingImages = [
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/470198284_553630804136517_8161776634719102663_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=lNI1hPhNQuAQ7kNvgGfDG2D&_nc_oc=AdgX0nY8ttgduLphwDAwRBdfeFaKcVeem3trcgl24Q2IMCNkm4LYqfnGLQdyU7-GZM6b9fLE4kvap5xnbM2OtCbn&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AIdKndZhe2tAtM7NY3Vog4w&oh=00_AYCMCH28HJY4hmPrt0wSHV1BGYgTekVesekByuD69KG3BQ&oe=6796FB2A",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/474574343_579461181553479_8087329621896741901_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=iucmuI-v1PkQ7kNvgEk-X1Q&_nc_oc=AdjTv3waSw2S-SDnw7_AymAPdtyTFchHSgVuX3XDPpGLNmQRUPJgBahBVe09OY4NF8PRVnmswohoiYLG3X1DqZSu&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A6X0rJr3yPNM3GnmuhEdc_m&oh=00_AYDV3qjaqToDTNM2NCdCFrMlmgKXwIjop2Rhv54V-UklLA&oe=6796EFA4",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/473857629_1845406992894608_2309742168161292792_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=pF2yqV7PlfgQ7kNvgFttZzQ&_nc_oc=AdgzzULt7VTdxQdcg_CpbwqMqe2J5Wcdid4qGdezD9Lz4hi5CaaOuxSqSWqWltbUR5-OYe2hlmVe5-bbXX75ufN2&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=ACBc3uiBmoV8uu2Kon8INKi&oh=00_AYDPj9Co5BfgiKzyh9_ho21djGk9Seum9kv2lOvuKfI6gQ&oe=6797BC77",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/459111784_485967870902811_7587470118287044649_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=tU9n7tzEqd0Q7kNvgEhHyQs&_nc_oc=AditGpGDKC1u27_zdPDNMhUsRlrkqKmNjhcX7d5v56q69jb9cDP6JjNWayk3fn3SItvt1tFK6kYeI6WTUGlcWpbf&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AVLfyWgpqXaAm-p9GzqJqWS&oh=00_AYAjXRBcf0oaD2x_B-chs-hrwY_FpSHeLlR1XblVRlDWsQ&oe=67971026",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/458967868_485967827569482_5269073594274510574_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=1JWdMzgE_XIQ7kNvgEf-BM2&_nc_oc=AdgsWqLYWBGvAl4y9uZZSwGfHw4vdnvy-YBQWnMkSfJ_4yyCYsOGOAhApAYE1Vz7icWa7CeDi5OjuaCWovrGl5fM&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AeVFmdemVTIJc2wFIr4fzOC&oh=00_AYD6-ukaSBbZg_MwYap4L5nV0cQEHdrkwjkLZShkQXxC5w&oe=6797251E",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/439442179_409857755180490_4167444960082298685_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=YV5uuZhGjkIQ7kNvgHN6Vy1&_nc_oc=AdiAR_1828cq_wclkQWg0RySjMoQbdq2bBa65DfH02_oK0nX0PqvSM9AWsNHRkAbsFm20nAjLulkaMYmBZ0qbXcw&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A4UIkvMasMWkTGE07uJ54Xo&oh=00_AYDg4tF3oNbvfpw6jjjH-2JnI3Gyo9H9xvOZZJdOwWa9kw&oe=67971488",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/438035324_398240519675547_7488971483946083606_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=--cxl3oczRkQ7kNvgGuydnk&_nc_oc=AdggOe3bZnOQiZ2kGN9e9JycfOVnDZulEBCDbhkGo8QukT7GVMc1D8qS-7_LCLFXomtuF2cMCop1hu67cVxFYDwS&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AkopaERGfyQdmKL5gjCFEL6&oh=00_AYDSIrFpdwZI8A5I6zPhC8zBOUdzHUcHinZGqsjqxDubCg&oe=6796FAFB",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/437719571_398167693016163_6090413816206930921_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ioowBe19vJkQ7kNvgHY0Xjt&_nc_oc=AdgBiv8Dg6AZw4uTN72OI8J4zd8woEPDOXXi74s7RQv3uA0R0W6JTGEZ7kUiaiquMIelDcBT7lwKai-bO-OI7GzS&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A4UvtNBQAwoXY1WsSllYSE8&oh=00_AYBpkZ_MeAXjsiwC6-nOFWrGry0j38N00J5Y-pVRgIOBFw&oe=6796F62C",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/436380629_398165403016392_3128893779811205041_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=z_ht_kXmZL8Q7kNvgE0VEtm&_nc_oc=AdiaieToisO71UexoIBXjJP3fmAQmOEailJUeYWLh9xhsnhkBSXckMOvmA8XoAB_evs7jwXwpGWo_n88VbXNZe5J&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AQWxPR9TogjHFG3h6SrA4g4&oh=00_AYCSSCb9iQhzLEJqNZu9KeGLYFNoOWNC2UH-12ByXdKXfg&oe=6796F367",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/428701989_364150496417883_2871841121390316090_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=zbNINl2K6TwQ7kNvgEdwGuv&_nc_oc=AdjGAZ5EaaFDHUr4QZCXjwHrGokVksrXLU4sogF3Lx5MRFxlWA3CuLBkk2TAYDNUSrGMb696JHJi4K4IRCTckAdf&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A7bthwoCvNyns67sPoZxXQH&oh=00_AYAPUx6paPHMBc2GhKSYbohmqBtt-d46dwN8z3UEMXaHLg&oe=6796FD5F",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/436480801_398166209682978_6600618338595341757_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=utZ0FNFskHQQ7kNvgE8_A0H&_nc_oc=AdhZIGEiRYvrNJXBWC5vtUJ4pG8HBF3T9ZLTLqpGbNbQxVHxbqLe1oHTsTuNHFqWEXbuVvk2nU7l4iP68Mn3d7i4&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A4DK8SlWzWDOjWAS2ilYqm-&oh=00_AYBWvjjmxcwSF2-3-2KiZ1jsn3iHFZ1_C1uTerEMyxQAlA&oe=6796FF1C",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/436305788_394043753428557_5698186534761753563_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=wvwhxr1gzKoQ7kNvgEm7fke&_nc_oc=AdhBb93C79B3nvbsTLD5P4e688074khn6TqLi0ZI0sCSud0WDlFMNYs4B3wAg5xDLbNgBMQdWW_KdwM-oHyjgl-2&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AObX6zgQK8CY6JdQCvymfGP&oh=00_AYDceg5pQFN6cEnFOM2m5Y6io4d9fbvH32zWm8hRIk3WKQ&oe=679704FA",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/433005288_376975841802015_7672900624259102774_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=TMJnWgoxIXsQ7kNvgH42Ijz&_nc_oc=AdhsRHyl2dCBd8erCvKQKVlXuE0KMlnieyfWzvM0TF7Vxhnog2wGiR6biO71e08ZkE4o-C4_rUI1dNoK2h92VvgO&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=Aya69QFy5oMku2c1hEhEY79&oh=00_AYA37StGhTf6V12owl_4Bq-Kp1n1v8avTdNu8TgweV-xNw&oe=6797254C",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/429584632_375026551996944_987402350408527286_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=8XVnuMOtDJwQ7kNvgFC1ODe&_nc_oc=Adgni0C3bU_JV3UXVbracN9Vsbs-YIzSoio943bB2QJJf61bNGpuY4swzaqKiy3J0bysU5XXGQs4iiPVYGn0L8Ha&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AsfjGpz7EslsfPkCeJF87Dl&oh=00_AYAZUhAuAzF8ZQk448240MuQeKIyKBHDcZgfFCHkW4aEBA&oe=67971DBC",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/424961121_364153223084277_208231516302489956_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=Zdg4pp6n36cQ7kNvgFqUuig&_nc_oc=AdgrJAW9hfP8ZgdkcC9R3IKhaD94etA0Jb0EVKv690BDV8qSnUgxgp86gZVpLpD_sAhbfBz2cR3DvU2z8PqUv3LG&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AvLSAlN4hjLYP9T5GeM2_bl&oh=00_AYCXQZp21IBG76naCRc8NuYgDH7ss5pxjMEpCzePsaSvvA&oe=6796F9C7",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/424949339_364153173084282_8381870308918175258_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ZPt3biPyC9EQ7kNvgHkch4I&_nc_oc=Adj9GzcYH-nIX2TQl0iOv0-tnaXjTXiw5_cdW6ToGgcGgyW2aFGqX0hZiJ6ELdUKkKocTznRGAeJI0Hs9P1dEp3Y&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=ArRd3T36g2nWO8MLXisxkun&oh=00_AYDkRH_sb1gbfkx-lYLyMGEolWg4K8bCn_dj7OpUNshhKg&oe=6796F94F",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/428708413_364149049751361_3065360483147215494_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=833d8c&_nc_ohc=N91Zo7it80YQ7kNvgHWyVTt&_nc_oc=AdidRGzZnSVmQQIQoFXp8nWwSVHjH3M5FaQCNxYTxLMVrsn6U9c6nuPFiOMp2v15TcLKfMhw5k_0lgj_KBWfQYna&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A-YYEweEWiP2fPIoSZvuFDK&oh=00_AYDnX3RhtQlug1onDhdWChsm4ku9LC5JG78sDfSN-PQf5Q&oe=67972571",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/428672513_364150406417892_298587735151926415_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=ZC7cA-9FLjMQ7kNvgGm1n4O&_nc_oc=Adi32uc1Cq53Q-LNGnHxpHmT8FagLgmFKdnHiAmHPNmAl20iXpWOW8LjWMwerWQCfuKk4E6JJVHLTNd2oXfAVILs&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AngzaQxbg1XGmcIBT8sqkDf&oh=00_AYCeezx8jPwN4_uV_DZRecPcQ_uy6rsSP8m_yD4UDVrUlg&oe=679715F8",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/473857629_1845406992894608_2309742168161292792_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=pF2yqV7PlfgQ7kNvgFttZzQ&_nc_oc=AdgzzULt7VTdxQdcg_CpbwqMqe2J5Wcdid4qGdezD9Lz4hi5CaaOuxSqSWqWltbUR5-OYe2hlmVe5-bbXX75ufN2&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=ACBc3uiBmoV8uu2Kon8INKi&oh=00_AYDPj9Co5BfgiKzyh9_ho21djGk9Seum9kv2lOvuKfI6gQ&oe=6797BC77",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/428681643_364150176417915_941248829138112472_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=110&ccb=1-7&_nc_sid=833d8c&_nc_ohc=FdLB2UuxaOgQ7kNvgEcd0Kq&_nc_oc=AdigLWgKSkeNu9AENfIuqVTteEdywEMNoShVYAjVPtjNVCgYM39E2OUUmVAH9K0urumnnLVkA28Qk-96EE8KzoKo&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AlOKGjbuDszD_lCXGtG8rki&oh=00_AYAClNWXvXum0QbmGvKWcwawq2su4CtvdnB_oPTZkaW3Aw&oe=6796FC8E",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/428667738_364150159751250_3177710882270134745_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=scj_K-NipgAQ7kNvgHaftqt&_nc_oc=Adhw7m9T0Pr2Kpvi-e4keH3zctxDazVwUxaBJRw9qGAT-ruYIEpyL3QyUhbW0U3sSLmxkyF20Cxt2AloSJHsqD-3&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AbfxvaN0gNftugFgpWVvypL&oh=00_AYC8yaYr2JNYLBAZKGGuXr4Sl0QgKeOfmXOE1Gn3_6INiw&oe=6797245C",
+  "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/428708714_364149963084603_3499606314714259647_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=833d8c&_nc_ohc=PLaUk2N5npAQ7kNvgGnFGFj&_nc_oc=Adj1yJiJqhL-ObsHCy37SV9UhL3koCbk2zSEp0UDk2cnbUaSsi5KnImqzuAJ-cDxDXbtDdHeJyg278v0Vl736_97&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A3tjCM7o8ugrXFnameENFCw&oh=00_AYCmzMWMazOfhM3st-MyIDW7wqc0eecqALCG9F377qvwZQ&oe=6797026E",
+];
 
 export default function Page() {
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
   return (
     <>
       <Navbar />
       <div className="min-h-screen relative overflow-hidden">
         {/* Gradient Background */}
-        <div className="absolute inset-0 bg-black">
-          <div className="absolute inset-0 bg-gradient-to-tr from-blue-950 via-slate-900 to-blue-900 opacity-90" />
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_top_right,rgba(59,130,246,0.1),transparent_50%)]" />
-          <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_bottom_left,rgba(59,130,246,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[#0a192f]">
+          {/* Gradient Animations */}
+          <div className="absolute inset-0">
+            <motion.div
+              animate={{
+                background: [
+                  "radial-gradient(circle at 0% 0%, rgba(59,130,246,0.1) 0%, transparent 50%)",
+                  "radial-gradient(circle at 100% 100%, rgba(59,130,246,0.1) 0%, transparent 50%)",
+                  "radial-gradient(circle at 0% 0%, rgba(59,130,246,0.1) 0%, transparent 50%)",
+                ],
+              }}
+              transition={{ duration: 10, repeat: Number.POSITIVE_INFINITY }}
+              className="absolute inset-0"
+            />
+            <motion.div
+              animate={{
+                background: [
+                  "radial-gradient(circle at 100% 0%, rgba(29,78,216,0.15) 0%, transparent 60%)",
+                  "radial-gradient(circle at 0% 100%, rgba(29,78,216,0.15) 0%, transparent 60%)",
+                  "radial-gradient(circle at 100% 0%, rgba(29,78,216,0.15) 0%, transparent 60%)",
+                ],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Number.POSITIVE_INFINITY,
+                delay: 1,
+              }}
+              className="absolute inset-0"
+            />
+          </div>
         </div>
+        {/* Floating Images */}
+        {mounted && (
+          <div className="fixed inset-0 pointer-events-none">
+            <AnimatePresence>
+              {floatingImages.map((img, index) => (
+                <motion.div
+                  key={index}
+                  initial={{
+                    opacity: 0,
+                    x: Math.random() * window.innerWidth,
+                    y: Math.random() * window.innerHeight,
+                    scale: 0,
+                    rotate: Math.random() * 360,
+                  }}
+                  animate={{
+                    opacity: [0, 0.2, 0],
+                    x: [null, Math.random() * window.innerWidth],
+                    y: [null, Math.random() * window.innerHeight],
+                    scale: [0, 0.5, 0],
+                    rotate: [null, Math.random() * 360],
+                  }}
+                  transition={{
+                    duration: 15 + Math.random() * 10,
+                    repeat: Number.POSITIVE_INFINITY,
+                    delay: index * 2,
+                  }}
+                  className="absolute w-40 h-40 rounded-lg overflow-hidden"
+                  style={{
+                    filter: "blur(1px) brightness(0.7)",
+                  }}
+                >
+                  <Image
+                    src={img || "/placeholder.svg"}
+                    alt=""
+                    fill
+                    className="object-cover"
+                  />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </div>
+        )}
         <main className="relative min-h-screen flex items-center">
           {/* Animated Gradient Lines */}
           <div className="absolute inset-0 overflow-hidden">
@@ -68,8 +168,8 @@ export default function Page() {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
         </main>
       </div>
-      <ParallaxScroll images={images} />
 
+      <ParallaxScroll images={images} />
       <Footer />
     </>
   );
@@ -78,6 +178,7 @@ export default function Page() {
 const images = [
   "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/470198284_553630804136517_8161776634719102663_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=109&ccb=1-7&_nc_sid=833d8c&_nc_ohc=lNI1hPhNQuAQ7kNvgGfDG2D&_nc_oc=AdgX0nY8ttgduLphwDAwRBdfeFaKcVeem3trcgl24Q2IMCNkm4LYqfnGLQdyU7-GZM6b9fLE4kvap5xnbM2OtCbn&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AIdKndZhe2tAtM7NY3Vog4w&oh=00_AYCMCH28HJY4hmPrt0wSHV1BGYgTekVesekByuD69KG3BQ&oe=6796FB2A",
   "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/474574343_579461181553479_8087329621896741901_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=iucmuI-v1PkQ7kNvgEk-X1Q&_nc_oc=AdjTv3waSw2S-SDnw7_AymAPdtyTFchHSgVuX3XDPpGLNmQRUPJgBahBVe09OY4NF8PRVnmswohoiYLG3X1DqZSu&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=A6X0rJr3yPNM3GnmuhEdc_m&oh=00_AYDV3qjaqToDTNM2NCdCFrMlmgKXwIjop2Rhv54V-UklLA&oe=6796EFA4",
+  
   "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/474180317_579461108220153_7378364643685537575_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=100&ccb=1-7&_nc_sid=833d8c&_nc_ohc=en0n_CCzVpMQ7kNvgFF9Ekf&_nc_oc=Adh5gz4ahkUwcN7KQK-oYAd9aOmRTemqR_cYb6aFm4t6aHIBsj5VhPs0_UN-grFcZh5OPGmxmz7ZN4FU_g7ydhVy&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AYqsxLDt3U2BSX3WDqCvniM&oh=00_AYBYzWJL0odxnaAqH253c0U3-Pn-Qn7xigdsEViysLouVg&oe=679719D6",
   "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/459111784_485967870902811_7587470118287044649_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=101&ccb=1-7&_nc_sid=833d8c&_nc_ohc=tU9n7tzEqd0Q7kNvgEhHyQs&_nc_oc=AditGpGDKC1u27_zdPDNMhUsRlrkqKmNjhcX7d5v56q69jb9cDP6JjNWayk3fn3SItvt1tFK6kYeI6WTUGlcWpbf&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AVLfyWgpqXaAm-p9GzqJqWS&oh=00_AYAjXRBcf0oaD2x_B-chs-hrwY_FpSHeLlR1XblVRlDWsQ&oe=67971026",
   "https://scontent.fbir1-1.fna.fbcdn.net/v/t39.30808-6/458967868_485967827569482_5269073594274510574_n.jpg?stp=cp6_dst-jpg_tt6&_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=1JWdMzgE_XIQ7kNvgEf-BM2&_nc_oc=AdgsWqLYWBGvAl4y9uZZSwGfHw4vdnvy-YBQWnMkSfJ_4yyCYsOGOAhApAYE1Vz7icWa7CeDi5OjuaCWovrGl5fM&_nc_zt=23&_nc_ht=scontent.fbir1-1.fna&_nc_gid=AeVFmdemVTIJc2wFIr4fzOC&oh=00_AYD6-ukaSBbZg_MwYap4L5nV0cQEHdrkwjkLZShkQXxC5w&oe=6797251E",

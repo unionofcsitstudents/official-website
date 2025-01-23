@@ -5,7 +5,8 @@ import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import suyash from "../../public/founding-members/suyash.webp";
 import rohan from "../../public/founding-members/rohan.webp";
-import jenisha from "../../public/founding-members/jenisha.webp";
+import srijal from "../../public/founding-members/srijal.webp";
+
 import Image from "next/image";
 import {
   Accordion,
@@ -21,9 +22,9 @@ import { Button } from "@/components/ui/button";
 
 export default function Page() {
   const timelineEvents = [
-    { year: "2010", title: "Organization Founded" },
-    { year: "2015", title: "Expanded to National Level" },
-    { year: "2020", title: "International Recognition" },
+    { year: "1", title: "Discover our mission, vision, and the projects." },
+    { year: "2", title: "Bring your unique ideas and skills to innovate solutions" },
+    { year: "3", title: "Collaborate with like-minded individuals." },
   ];
 
   const teamMembers = [
@@ -42,11 +43,11 @@ export default function Page() {
       imageUrl: rohan,
     },
     {
-      name: "Jenisha Karmacharya",
-      role: "Treasurer",
+      name: "Srijal Bhattarai",
+      role: "Advisor",
       description:
-        "Building and nurturing relationships with our community partners.",
-      imageUrl: jenisha,
+        "Overseeing project implementation and community outreach initiatives.",
+      imageUrl: srijal,
     },
   ];
 
@@ -215,7 +216,7 @@ export default function Page() {
               </h2>
               <div className="space-y-4">
                 <p className="text-blue-100/80">
-                  Founded in 2010, our organization has grown from a small group
+                  Founded in 2080, our organization has grown from a small group
                   of dedicated volunteers to a thriving community of
                   change-makers. Over the years, we&apos;ve successfully
                   implemented numerous projects that have positively impacted

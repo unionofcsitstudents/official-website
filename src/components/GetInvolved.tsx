@@ -1,9 +1,9 @@
-import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Users, User, DollarSign } from "lucide-react";
+import { Users, User,  } from "lucide-react";
 import { motion } from "framer-motion";
 import PopupFormVolunteer from "./PopupFormVolunteer";
 import PopupFormMember from "./PopupFormMember";
+import PopupFormMentor from "./PopupFormMentor";
 
 export default function GetInvolved() {
   return (
@@ -78,7 +78,8 @@ export default function GetInvolved() {
                   Become a Member
                 </h3>
                 <p className="text-gray-600 text-center mb-6">
-                  Join our community and lets work together to make a difference.
+                  Join our community and lets work together to make a
+                  difference.
                 </p>
                 <PopupFormMember />
               </CardContent>
@@ -99,38 +100,17 @@ export default function GetInvolved() {
               <CardContent className="pt-6">
                 <div className="flex justify-center">
                   <div className="bg-colors-customBlue  p-4 rounded-full">
-                    <DollarSign className="w-6 h-6 text-white " />
+                    <Users className="w-6 h-6 text-white " />
                   </div>
                 </div>
                 <h3 className="text-xl font-bold mt-4 mb-2 text-center">
-                  Make a Donation
+                  Mentorship Program
                 </h3>
                 <p className="text-gray-600 text-center mb-6">
-                  Support our cause through financial contributions.
+                  Share your expertise or learn from industry experts through
+                  our mentorship initiative.
                 </p>
-                <div className="grid grid-cols-3 gap-2 mb-4">
-                  <Button
-                    variant="outline"
-                    className="w-full border-colors-customBlue  text-colors-customBlue  hover:bg-colors-customBlue/90 hover:text-white "
-                  >
-                    $10
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full border-colors-customBlue  text-colors-customBlue  hover:bg-colors-customBlue/90  hover:text-white"
-                  >
-                    $25
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="w-full border-colors-customBlue  text-colors-customBlue  hover:bg-colors-customBlue/90  hover:text-white"
-                  >
-                    $50
-                  </Button>
-                </div>
-                <Button className="w-full bg-colors-customBlue  hover:bg-colors-customBlue/100  text-white">
-                  Donate Now
-                </Button>
+                <PopupFormMentor />
               </CardContent>
             </Card>
           </motion.div>
