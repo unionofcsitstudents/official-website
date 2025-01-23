@@ -11,7 +11,10 @@ import { NextConfig } from 'next';
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.unsplash.com', 'hebbkx1anhila5yf.public.blob.vercel-storage.com','scontent.fbir1-1.fna.fbcdn.net'] // Add allowed domains here
+    remotePatterns: [
+      { protocol: 'https', hostname: 'hebbkx1anhila5yf.public.blob.vercel-storage.com' },
+      { protocol: 'https', hostname: 'scontent.fbir1-1.fna.fbcdn.net' }
+    ] // Add allowed domains here
   },
 };
 

@@ -1,3 +1,4 @@
+"use client"
 import { Card, CardContent } from "@/components/ui/card";
 import { Users, User,  } from "lucide-react";
 import { motion } from "framer-motion";

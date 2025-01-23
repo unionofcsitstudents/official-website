@@ -1,3 +1,4 @@
+"use client"
 import EventCard from "@/components/EventCard";
 import { motion } from "framer-motion";
 const events = [

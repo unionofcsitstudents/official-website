@@ -19,11 +19,43 @@ import ContactForm from "@/components/ContactForm";
 import GetInvolved from "@/components/GetInvolved";
 import EventList from "@/components/EventList";
 import { Button } from "@/components/ui/button";
+import { useEffect, useState, JSX } from "react";
 
 export default function Page() {
+  const [floatingElements, setFloatingElements] = useState<JSX.Element[]>([]);
+
+  useEffect(() => {
+    // Ensure this runs only in the client
+    if (typeof window !== "undefined") {
+      const elements = [...Array(20)].map((_, i) => (
+        <motion.div
+          key={i}
+          className="absolute w-1 h-1 bg-blue-400 rounded-full"
+          initial={{
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+          }}
+          animate={{
+            y: [700, 50, 100],
+            opacity: [0.2, 0.6, 1],
+          }}
+          transition={{
+            duration: 5 + Math.random() * 2,
+            repeat: Number.POSITIVE_INFINITY,
+            delay: Math.random() * 2,
+          }}
+        />
+      ));
+      setFloatingElements(elements);
+    }
+  }, []);
+
   const timelineEvents = [
     { year: "1", title: "Discover our mission, vision, and the projects." },
-    { year: "2", title: "Bring your unique ideas and skills to innovate solutions" },
+    {
+      year: "2",
+      title: "Bring your unique ideas and skills to innovate solutions",
+    },
     { year: "3", title: "Collaborate with like-minded individuals." },
   ];
 
@@ -71,25 +103,7 @@ export default function Page() {
 
         {/* Floating Elements */}
         <div className="absolute inset-0 overflow-hidden">
-          {[...Array(20)].map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute w-1 h-1 bg-blue-400 rounded-full"
-              initial={{
-                x: Math.random() * window.innerWidth,
-                y: Math.random() * window.innerHeight,
-              }}
-              animate={{
-                y: [700, 50, 100],
-                opacity: [0.2, 0.6, 1],
-              }}
-              transition={{
-                duration: 5 + Math.random() * 2,
-                repeat: Number.POSITIVE_INFINITY,
-                delay: Math.random() * 2,
-              }}
-            />
-          ))}
+          {floatingElements}
         </div>
         {/* Hero Section */}
         <main className="relative min-h-screen flex items-center justify-center px-4">
